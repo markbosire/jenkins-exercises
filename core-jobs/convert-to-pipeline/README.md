@@ -1,6 +1,6 @@
 # **Converting Freestyle Project to Jenkins Pipeline**  
 
-This guide explains how to migrate the **`core-jobs/freestyle-job`** (a temperature and currency rate checker) from a **Freestyle Project** to a **Declarative Pipeline**. The new Pipeline is defined in a **`Jenkinsfile`** and provides better structure, error handling, and scalability.  
+This guide explains how to migrate [Create a Freestyle Job](/core-jobs/freestyle-job/) from a **Freestyle Project** to a **Declarative Pipeline**. The new Pipeline is defined in a **`Jenkinsfile`** and provides better structure, error handling, and scalability.  
 
 ---
 
