@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    stages {
+        stage("Monitor System Metrics") {
+            steps {
+                parallel(
+                    cpu: {
+                        sh '''
+                        echo "Collecting CPU usage..."
+                        top -bn1 | grep "Cpu(s)" | awk '{print "CPU Usage: " $2 "% user, " $4 "% system, " $8 "% idle"}' > cpu_usage.txt
+                        '''
+                    },
+                    memory: {
+                        sh '''
+                        echo "Collecting Memory usage..."
+                        free -m | awk 'NR==2{printf "Memory Usage: Used: %sMB / Total: %sMB (Free: %sMB)\\n", $3,$2,$4}' > memory_usage.txt
+                        '''
+                    },
+                    disk: {
+                        sh '''
+                        echo "Collecting Disk usage..."
+                        df -h | grep "/dev/sda2" | awk '{print "Disk Usage on /dev/sda2: " $5 " used (" $3 " of " $2 ")"}' > disk_usage.txt
+                        '''
+                    }
+                )
+            }
+        }
+    }
+    post {
+        success {
+            sh '''
+            echo "=== CPU USAGE ===" > system_report.txt
+            cat cpu_usage.txt >> system_report.txt
+
+            echo "\n=== MEMORY USAGE ===" >> system_report.txt
+            cat memory_usage.txt >> system_report.txt
+
+            echo "\n=== DISK USAGE ===" >> system_report.txt
+            cat disk_usage.txt >> system_report.txt
+
+            echo "\n--- Final Report ---"
+            cat system_report.txt
+
+            rm -f *usage*.txt
+            '''
+        }
+    }
+}

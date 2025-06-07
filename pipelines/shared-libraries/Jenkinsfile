@@ -1,0 +1,13 @@
+@Library('my-shared-library@main') _  // _ is required for imports
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                // Use library methods
+                buildApp(appName: 'my-service', version: '1.0.0')
+            }
+        }
+    }
+}

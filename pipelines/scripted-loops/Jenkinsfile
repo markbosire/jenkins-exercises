@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage("Generate") {
+            steps {
+                script {
+                    def numbers = [1, 2, 3, 4, 5]
+                    for (int i in numbers) {
+                        sh "touch ${i}.txt"
+                    }
+                }
+            }
+        }
+        stage("Populate") {
+            steps {
+                script {
+                    def numbers = [1, 2, 3, 4, 5]
+                    for (int i in numbers) {
+                        sh "echo 'this is file ${i}' > ${i}.txt"
+                    }
+                }
+            }
+        }
+        stage("Validate") {
+            steps {
+                script {
+                    def numbers = [1, 2, 3, 4, 5]
+                    for (int i in numbers) {
+                        sh "cat ${i}.txt"
+                    }
+                }
+            }
+        }
+    }
+}
