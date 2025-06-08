@@ -1,6 +1,6 @@
 # Jenkins Learning Path: 50 Practical Exercises
 
-Welcome to the **Jenkins 50 Exercises Challenge**. This repo is designed to provide practical, real-world exercises to help you **master Jenkins** by working through **CI/CD, pipelines, agents, Docker, GitOps, credentials, testing, deployment**, and more.
+This is my personal documentation of the Jenkins 50 Exercises Challenge that I completed to master Jenkins through hands-on practice. Working through these CI/CD, pipelines, agents, Docker, GitOps, credentials, testing, deployment exercises transformed my understanding from theory to real-world implementation.
 
 ---
 
