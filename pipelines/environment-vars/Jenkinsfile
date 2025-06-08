@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('confirmation') {
+            environment {
+                user = 'vagrant'
+            }
+            steps {
+                sh "echo `whoami`s real name is ${env.user}"
+            }
+        }
+    }
+}
