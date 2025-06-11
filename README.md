@@ -29,7 +29,7 @@ This is my personal documentation of the Jenkins 50 Exercises Challenge that I c
 - [Unit Testing with JUnit Plugin](/ci-cd/unit-testing/)
 - [Code Linting in Pipeline](/ci-cd/code-linting/)
 - [Push Docker Image to DockerHub](/ci-cd/dockerhub-publish/)
-- [Deploy to Kubernetes or Remote Server](/ci-cd/k8s-or-ssh-deploy/)
+- [Deploy to Remote Server](/ci-cd/k8s-or-ssh-deploy/)
 
 ---
 

@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_HOST = "192.168.100.51" // your Docker host IP
+    }
+
+    stages {
+        stage('Deploy NGINX via SSH') {
+            steps {
+                withCredentials([sshUserPrivateKey(
+                    credentialsId: 'docker-ssh-creds',
+                    keyFileVariable: 'KEY',
+                    usernameVariable: 'USER'
+                )]) {
+                    sh '''
+ssh -o StrictHostKeyChecking=no -i "$KEY" "$USER@$DOCKER_HOST" '
+  mkdir -p ~/nginx-content &&
+  echo "Hello from Jenkins" > ~/nginx-content/index.html &&
+  docker rm -f jenkins-nginx || true &&
+  docker run -d \
+    --name jenkins-nginx \
+    -p 8080:80 \
+    -v ~/nginx-content:/usr/share/nginx/html:ro \
+    nginx
+'
+'''
+                }
+            }
+        }
+    }
+}
