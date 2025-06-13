@@ -37,14 +37,14 @@ This is my personal documentation of the Jenkins 50 Exercises Challenge that I c
 - [Clone Private Git Repo using SSH](/scm/private-repo-ssh/)
 - [Trigger Builds by Branch or Tag](/scm/branch-tag-trigger/)
 - [Multibranch Pipeline for GitHub/GitLab](/scm/multibranch-pipeline/)
-- [Set PR Build Status for Bitbucket/GitLab](/scm/pr-build-status/)
+- [Build Status Badges](/scm/pr-build-status/)
 
 ---
 
 ## 👥 Agents & Distributed Builds
 - [Add and Label Jenkins Agent](/agents/add-agent/)
 - [Run Job on Specific Agent](/agents/specific-agent/)
-- [Use Docker-in-Docker Agent](/agents/dind-agent/)
+- [Setup docker as a cloud agent](/agents/dind-agent/)
 - [Run Stages on Different Agents](/agents/multi-agent-stages/)
 
 ---
